@@ -11,7 +11,6 @@ import { ThreeDots } from "react-loader-spinner";
 function Habits(){
     const [Open, SetOpen] = useState(false)
     const [newhabit,Sethabit] =useState('')
-    const [semana,Setsemana] =  
     const Habit_plus = styled(Create_Habit)`
     display:${Open===true?'flex':'none'};`
     function send_habit(){
