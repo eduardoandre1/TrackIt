@@ -23,8 +23,6 @@ function Login(){
 
     }
     return(
-        <>
-        
         <Loginstyle>
         <img src="src/assets/logo.jpg" alt="logo" />
             <h1>TrackIt</h1>
@@ -43,7 +41,6 @@ function Login(){
             </button>
             <Link to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
         </Loginstyle>
-        </>
     )
 }
 
