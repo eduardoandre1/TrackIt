@@ -3,6 +3,7 @@ import Cadrastrostyle from "./Cadrastrostyle"
 import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 function Cadrastro(){
     const [waitlogin,SetWaitlogin]= useState(false)
     const [Email,SetEmail] = useState('')
@@ -28,16 +29,17 @@ function Cadrastro(){
         }
     }
     function Cadastro_server(){
+        SetWaitlogin(true)
         isnull()
         const new_user ={
             email: Email,
-            name: Senha,
-            image: Nome,
-            password: Foto
+            name: Nome,
+            image: Foto,
+            password: Senha
         }
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up',new_user)
-        promise.then(()=>{useNavigate('/login')})
-        promise.catch(()=>{alert('erro no servidor')})
+        promise.then(()=>{alert('enviado')})
+        promise.catch(()=>{alert('erro no servidor');SetWaitlogin(false)})
     }
     return(
     <>
@@ -60,6 +62,7 @@ function Cadrastro(){
                     onClick={()=>Cadastro_server()}>
                     {waitlogin==false?"Entrar":<ThreeDots color="white" />}
             </button>
+        <Link to='/'>Já tem uma conta? Faça login!</Link>
         </Cadrastrostyle>
     </>
     )
