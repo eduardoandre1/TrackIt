@@ -66,6 +66,9 @@ const Loginstyle = styled.div`
         line-height: 26px;
         text-align: center;
         color: #FFFFFF;
+        justify-content: center;
+        align-items: center;
+        display: flex;
     }
     a{
         width: 232px;

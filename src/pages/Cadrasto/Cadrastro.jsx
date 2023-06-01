@@ -3,7 +3,7 @@ function Cadrastro(){
     return(
     <>
         <Cadrastrostyle>
-        <img src="src/assets/log.jpg" alt="logo" />
+        <img src="src/assets/logo.jpg" alt="logo" />
         <h1>TrackIt</h1>
         <form>
                 <input type="text" placeholder="Email"/><br />

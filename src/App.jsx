@@ -7,9 +7,6 @@ import Cadrastro from './pages/Cadrasto/Cadrastro'
 import Habits from './pages/Habits/Habits'
 import Resetstyle from './reset'
 function App() {
-  //<Route path="/hoje" element={<Today />}/>
-  //<Route path="/cadastro" element={<Cadrastro />}/>
-  //<Route path="/habitos" element={<Habit />}/>
   //<Route path="/historico" element={<History />} />
   return (
     <>
