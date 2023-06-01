@@ -4,10 +4,10 @@ import Loginstyle from "./Login-style";
 import { ThreeDots } from "react-loader-spinner";
 import { useState } from "react";
 import axios from "axios";
-import { useContexts } from "react";
 import Serve_answer from "../../assets/serve_answer";
 
 function Login(){
+    const navigate = useNavigate()
     const [waitlogin,SetWaitlogin]= useState(false)
     const[Email,SetEmail] = useState("")
     const [Senha,SetSenha] = useState("")
@@ -18,7 +18,7 @@ function Login(){
             password: Senha
         }
         const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",user)
-        promise.then((resposta)=>{Serve_answer.value = resposta.data;console.log(Serve_answer.value)})
+        promise.then((resposta)=>{Serve_answer.value = resposta.data;console.log(Serve_answer.value);navigate('/habitos')})
         promise.catch(()=>{alert('usuario invalido');SetSenha("");SetWaitlogin(false)})
         
         
@@ -30,7 +30,7 @@ function Login(){
             <h1>TrackIt</h1>
             <form>
                 <input 
-                    type="text"placeholder="Email" value={Email}
+                    type="email"placeholder="Email" value={Email}
                     onChange={(event)=>SetEmail(event.target.value)}/><br />
                 <input 
                     type="password" placeholder="Senha" value={Senha}

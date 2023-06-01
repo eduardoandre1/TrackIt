@@ -11,7 +11,8 @@ import Serve_answer from './assets/serve_answer'
 function App() {
   //<Route path="/historico" element={<History />} />
   axios.defaults.headers.common['Authorization'] = 'ZfyEHVktLffwQEsDXg9wTbtQ';
-  const [servertoken,SetToken] = useState('não foi') 
+  const [servertoken,SetToken] = useState({name: 'usuario', image: 'src/assets/logo.jpg', email: '', password: '123',token
+  :'valor'}) 
   return (
     <>
       <Resetstyle />
