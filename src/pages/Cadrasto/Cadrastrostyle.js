@@ -38,6 +38,7 @@ const Cadrastrostyle = styled.div`
         margin-bottom: 5px;
     }
     input{
+        all: unset;
         box-sizing: border-box;
         width: 303px;
         height: 45px;
@@ -59,7 +60,7 @@ const Cadrastrostyle = styled.div`
         left: 36px;
         top: 381px;
         background: #52B6FF;
-        border-radius: 4.63636px;
+        border-radius: 5px;
         font-family: 'Lexend Deca';
         font-style: normal;
         font-weight: 400;

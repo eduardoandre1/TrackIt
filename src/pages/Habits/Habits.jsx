@@ -6,6 +6,8 @@ const Habit_page = styled.div`
 background: #E5E5E5;
 width: 100%;
 height: 100vh;
+position: relative;
+display: flex;
 h1{
     width: 97px;
     height: 49px;
@@ -22,6 +24,7 @@ img{
     border-radius: 99px;
 }
 h2{
+    margin-top: 75px;
     width: 148px;
     height: 29px;
     font-family: 'Lexend Deca';
@@ -36,6 +39,7 @@ h3{
 }
 button{
     all: unset;
+    margin-top: 75px;
     width: 40px;
     height: 35px;
     background: #52B6FF;
@@ -49,6 +53,7 @@ button{
     color: #FFFFFF;
 }
 p{
+    margin-top: 75px;
     width: 338px;
     height: 74px;
     left: 17px;
@@ -71,16 +76,36 @@ h3{
 }
 `
 const Habit_head = styled.div`
+position: fixed;
+width: 100%;
+height: 70px;
+left: 0px;
+top: 0px;
+background: #126BA5;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+display: flex;
+justify-content: space-between;
 `
 const Habit_tail = styled.div`
+position: fixed;
+width: 100%;
+height: 70px;
+left: 0px;
+bottom: 0px;
+background: #FFFFFF;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
 `
 const Progress = styled.div`
+font-family: 'Lexend Deca';
 background-color:#52B6FF;
 color: red;
 width:91px;
 height:91px;
 border-radius: 50%;
-padding: 6px;`
+padding: 6px;
+margin-bottom:70px;`
 function Habits(){
     const percentage = 45;
     return(
@@ -90,8 +115,8 @@ function Habits(){
                 <img src="src/assets/logo.jpg" alt="" />
             </Habit_head>
             <h2>Meus hábitos</h2>
-            <button>+</button>
             <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
+            <button>+</button>
             <Habit_tail>
                 <h3>Hábitos</h3>
                 <Progress>
