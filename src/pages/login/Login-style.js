@@ -22,19 +22,7 @@ const Loginstyle = styled.div`
         color: #126BA5;
     }
     input:placeholder-shown{
-        box-sizing: border-box;
-        width: 303px;
-        height: 45px;
-        background: #FFFFFF;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-        font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 19.976px;
-        line-height: 25px;
         color: #DBDBDB;
-        margin-bottom: 5px;
     }
     input{
         box-sizing: border-box;

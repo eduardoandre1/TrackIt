@@ -6,6 +6,8 @@ width: 100vw;
 height: 100vh;
 position: relative;
 display: flex;
+flex-direction: column;
+align-items: center;
 h1{
     width: 97px;
     height: 49px;
@@ -127,11 +129,74 @@ padding: 6px;
 margin-bottom:70px;`
 
 const Create_Habit = styled.div`
+position: relative;
+margin-top:140px ;
 width: 340px;
-height: 180px;
+height: 300px;
 background: #FFFFFF;
 border-radius: 5px;
 display:flex;
+flex-direction: row;
+flex-wrap: wrap;
+button{
+    position: absolute;
+    right: 5px;
+    bottom:5px;
+    width: 84px;
+    height: 35px;
+    background: #52B6FF;
+    border-radius: 5px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.976px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    display:  flex;
+}
+h2{
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15.976px;
+    line-height: 20px;
+    text-align: center;
+    color: #52B6FF;
+}
+input{
+    box-sizing: border-box;
+    width: 303px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    margin: 18px;
+    margin-bottom: 0px;
+}
+`
+const Week =styled.div`
+display: flex;
+margin-left: 15px;
+div{
+    width: 30px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19.976px;
+    line-height: 25px;
+    text-align: center;
+    color: #DBDBDB;
+    margin: 2px;
+    }
 `
 
-export {Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv}
+export {Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week}
