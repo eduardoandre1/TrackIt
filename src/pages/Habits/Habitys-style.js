@@ -223,6 +223,4 @@ div{
     margin: 2px;
     }
 `
-const invertido =styled(Week.div)`
-`
 export {Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week ,Botons}
