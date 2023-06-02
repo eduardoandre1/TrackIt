@@ -61,7 +61,6 @@ function Habits(){
     
     //abrir menu de enviar 
     function Weekday(dia,selecionados){
-        if
     }
     function abrir(){
         if(Open===true){
