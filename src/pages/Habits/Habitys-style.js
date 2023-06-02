@@ -3,11 +3,11 @@ import styled from "styled-components";
 const Habit_page = styled.div`
 background: #E5E5E5;
 width: 100vw;
-height: 100vh;
-position: relative;
+height: 100%;
 display: flex;
 flex-direction: column;
 align-items: center;
+margin-top: 140px;
 h1{
     width: 97px;
     height: 49px;
@@ -80,7 +80,8 @@ h3{
 `
 
 const Habit_head = styled.div`
-position: absolute;
+position: fixed;
+z-index: 2;
 width: 100vw;
 height: 70px;
 left: 0px;
@@ -93,6 +94,7 @@ align-items: center;
 `
 const Habit_bar = styled(Habit_head)`
 position: absolute;
+z-index: 1;
 top: 70px;
 background: #E5E5E5;
 box-shadow: none;
@@ -130,7 +132,6 @@ margin-bottom:70px;`
 
 const Create_Habit = styled.div`
 position: relative;
-margin-top:140px ;
 width: 340px;
 height: 180px;
 background: #FFFFFF;
@@ -138,6 +139,7 @@ border-radius: 5px;
 display:flex;
 flex-direction: column;
 flex-wrap: wrap;
+margin-top: 15px;
 button{
     position: absolute;
     right: 5px;
@@ -159,7 +161,21 @@ button{
     align-items: center;
     display:  flex;
 }
+h1{
+    all: unset;
+    margin-top: 13px;
+    margin-left: 15px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19.976px;
+    line-height: 25px;
+    color: #666666;
+}
 h2{
+    position: absolute;
+    right: 65px;
+    bottom:5px;
     font-family: 'Lexend Deca';
     font-style: normal;
     font-weight: 400;
@@ -179,11 +195,19 @@ input{
     margin-bottom: 0px;
 }
 `
+const Botons = styled.div`
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 35px;
+`
 const Week =styled.div`
 display: flex;
 margin-left: 15px;
 margin-top: 10px;
 div{
+    all: unset;
     width: 30px;
     height: 30px;
     background: #FFFFFF;
@@ -200,4 +224,4 @@ div{
     }
 `
 
-export {Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week}
+export {Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week ,Botons}
