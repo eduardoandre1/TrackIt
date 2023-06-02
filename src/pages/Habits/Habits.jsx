@@ -25,23 +25,23 @@ function Habits(){
     //pegar habitos do servidor 
     function habit_list(){
         const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits',{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then((resposta)=>{setList(resposta.data.map((L)=>{habit_struture(L)}))})
+        promise.then((resposta)=>{setList(resposta.data.map((L)=>habit_struture(L)))})
     }
     function habit_struture(data){
         let sunday = Days.map((dia)=>{
             if(data.days.indexOf(dia.value)===-1){
-                console.log(dia.value)
-                return(<div>{Days.dia}</div>)
+                return(<div>{dia.dia}</div>)
             }else{
-                console.log('X')
-                return(<><div>X</div></>)
+                return(<div>X</div>)
                 
             }
         })
         return(
         <Create_Habit>
             <h1>{data.name}</h1>
+            <Week>
             {sunday}
+            </Week>  
         </Create_Habit>
         )
     }
