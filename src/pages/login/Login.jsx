@@ -24,7 +24,7 @@ function Login(){
     }
     return(
         <Loginstyle>
-        <img src="./src/assets/logo.jpg" alt="logo" />
+        <img src="./assets/logo.jpg" alt="logo" />
             <h1>TrackIt</h1>
             <form>
                 <input 
