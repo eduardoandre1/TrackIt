@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Habit_page = styled.div`
 background: #E5E5E5;
@@ -132,11 +132,11 @@ const Create_Habit = styled.div`
 position: relative;
 margin-top:140px ;
 width: 340px;
-height: 300px;
+height: 180px;
 background: #FFFFFF;
 border-radius: 5px;
 display:flex;
-flex-direction: row;
+flex-direction: column;
 flex-wrap: wrap;
 button{
     position: absolute;
@@ -182,6 +182,7 @@ input{
 const Week =styled.div`
 display: flex;
 margin-left: 15px;
+margin-top: 10px;
 div{
     width: 30px;
     height: 30px;
