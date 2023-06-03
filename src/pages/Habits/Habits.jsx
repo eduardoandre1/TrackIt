@@ -38,7 +38,7 @@ function Habits(){
         })
         return(
         <Habit_box key={data.id}>
-            <img onClick={(data)=>console.log(data.id)} src="../src/assets/trash.jpg" />
+            <img onClick={()=>delete_habit(data.id)} src="../src/assets/trash.jpg" />
             <h1>{data.name}</h1>
             <Week>
             {sunday}
@@ -46,7 +46,11 @@ function Habits(){
         </Habit_box>
         )
     }
-    
+    function delete_habit(id){
+        const promise =axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
+        promise.then(()=>habit_list)
+        promise.catch((resposta)=>console.log(resposta))
+    }
     
     //enviar habito
     function send_habit(){
