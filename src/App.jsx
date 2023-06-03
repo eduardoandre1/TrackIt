@@ -8,6 +8,7 @@ import Cadrastro from './pages/Cadrasto/Cadrastro'
 import Habits from './pages/Habits/Habits'
 import Resetstyle from './reset'
 import Serve_answer from './assets/serve_answer'
+import Today from './pages/Today/Today'
 function App() {
   //axios.defaults.headers.common['Authorization'] = 'ZfyEHVktLffwQEsDXg9wTbtQ';
   const [servertoken,SetToken] = useState({name: 'usuario', image: 'src/assets/logo.jpg', email: '', password: '123',token
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Login />}/>
           <Route path="/cadastro" element={<Cadrastro />}/>
           <Route path="/habitos" element={<Habits />}/>
+          <Route path='/hoje' element={<Today />}/>
           </Routes>
         </BrowserRouter>
       </Serve_answer.Provider>

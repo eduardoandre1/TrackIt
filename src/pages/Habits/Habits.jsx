@@ -5,6 +5,7 @@ import {Create_Habit, Habit_head ,Habit_page ,Habit_bar ,Progress ,Habit_tail ,M
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 function Habits(){
     const [Open, SetOpen] = useState(false)
@@ -123,6 +124,7 @@ function Habits(){
             <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
             <Habit_tail>
                 <h3>Hábitos</h3>
+                <Link to={'/hoje'}>
                 <Progress>
                 <CircularProgressbar
                 value={percentage}
@@ -133,6 +135,7 @@ function Habits(){
                 })}
                 text="Hoje" />
                 </Progress>
+                </Link>
                 <h3>Histórico</h3>
             </Habit_tail>
 
