@@ -1,7 +1,7 @@
 import { CircularProgressbar,buildStyles } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css";
 import Serve_answer from "../../assets/serve_answer";
-import {Create_Habit, Habit_head ,Habit_page ,Habit_bar ,Progress ,Habit_tail ,Minidiv, Week, Botons} from "./Habitys-style.js"
+import {Create_Habit, Habit_head ,Habit_page ,Habit_bar ,Progress ,Habit_tail ,Minidiv, Week, Botons, Invertido, Weekdaystyle, Habit_box} from "./Habitys-style.js"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
@@ -25,24 +25,25 @@ function Habits(){
     //pegar habitos do servidor 
     function habit_list(){
         const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits',{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then((resposta)=>{setList(resposta.data.map((L)=>habit_struture(L)))})
+        promise.then((resposta)=>{console.log(resposta.data);setList(resposta.data.map((L)=>habit_struture(L)))})
     }
     function habit_struture(data){
         let sunday = Days.map((dia)=>{
             if(data.days.indexOf(dia.value)===-1){
-                return(<div>{dia.dia}</div>)
+                return(<Weekdaystyle key={dia.value}>{dia.dia}</Weekdaystyle>)
             }else{
-                return(<div>X</div>)
+                return(<Invertido>{dia.dia}</Invertido>)
                 
             }
         })
         return(
-        <Create_Habit>
+        <Habit_box key={data.id}>
+            <img onClick={(data)=>console.log(data.id)} src="../src/assets/trash.jpg" />
             <h1>{data.name}</h1>
             <Week>
             {sunday}
             </Week>  
-        </Create_Habit>
+        </Habit_box>
         )
     }
     
@@ -60,7 +61,21 @@ function Habits(){
     }
     
     //abrir menu de enviar 
-    function Weekday(dia,selecionados){
+    function Weekday_select(dia,selecionados){
+        if(selecionados.indexOf(dia)=== -1){
+            const array = [...selecionados,dia]
+            SetDays(array) 
+        }else{
+            const filtro = selecionados.filter((item) => item !== dia)
+            SetDays(filtro)
+        }
+    }
+    function weekday_style(day,Select){
+        if(Select.indexOf(day.value)===-1){
+            return (<Weekdaystyle onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Weekdaystyle>)
+        }else{
+            return(<Invertido onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Invertido>)
+        }
     }
     function abrir(){
         if(Open===true){
@@ -68,7 +83,7 @@ function Habits(){
                     <input type="text" value={Newhabit} 
                     onChange={(event)=>{Sethabit(event.target.value)}}/>
                     <Week>
-                        {Days.map((day)=>{return (<div onClick={()=>{Weekday(day.value,Selectedays)}} >{day.dia}</div>)})}
+                        {Days.map((day)=>weekday_style(day,Selectedays))}
                     </Week>
                     <Botons>
                     <h2 onClick={()=>{SetOpen(false)}}>Cancel</h2>
@@ -82,8 +97,9 @@ function Habits(){
         
     }
     const aberto = abrir()
+    useEffect(()=>SetOpen(false),[])
     useEffect(()=>habit_list,[Open])
-    console.log(`${list}`)
+    
     return(
         <Habit_page>
             <Habit_head>

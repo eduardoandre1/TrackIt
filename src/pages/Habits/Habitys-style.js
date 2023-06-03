@@ -194,6 +194,14 @@ input{
     margin: 18px;
     margin-bottom: 0px;
 }
+img{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+
+}
 `
 const Botons = styled.div`
     flex-direction: column;
@@ -206,7 +214,10 @@ const Week =styled.div`
 display: flex;
 margin-left: 15px;
 margin-top: 10px;
-div{
+`
+const Habit_box = styled(Create_Habit)`
+height:91px;`
+const Weekdaystyle =styled.div`
     all: unset;
     width: 30px;
     height: 30px;
@@ -221,6 +232,20 @@ div{
     text-align: center;
     color: #DBDBDB;
     margin: 2px;
-    }
 `
-export {Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week ,Botons}
+const Invertido = styled.div`
+    width: 30px;
+    height: 30px;
+    background: #DBDBDB;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+    font-family: 'Lexend Deca';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19.976px;
+    line-height: 25px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 2px;
+`
+export {Habit_box, Weekdaystyle, Invertido, Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week ,Botons}
