@@ -48,21 +48,27 @@ function Cadrastro(){
         <h1>TrackIt</h1>
         <form>
                 <input type="text" placeholder="Email" value={Email}
+                        data-test="email-input"
                         onChange={(event)=>SetEmail(event.target.value)}/><br />
                 <input type="password" placeholder="Senha" value={Senha}
+                        data-test="password-input"
                         onChange={(event)=>SetSenha(event.target.value)}/><br />
                 <input type="text" placeholder="nome" value={Nome}
+                        data-test="user-name-input"
                         onChange={(event)=>SetNome(event.target.value)}/><br />
                 <input type="text" placeholder="foto" value={Foto}
+                        data-test="user-image-input"
                         onChange={(event)=>SetFoto(event.target.value)}/><br />
                 <input type="File" praceholder='arquivo'/>
         </form>
         <button 
+                    data-test="signup-btn"
                     disabled={waitlogin==true?true:false}
                     onClick={()=>Cadastro_server()}>
                     {waitlogin==false?"Entrar":<ThreeDots color="white" />}
             </button>
-        <Link to='/'>Já tem uma conta? Faça login!</Link>
+        <Link data-test="login-link"
+        to='/'>Já tem uma conta? Faça login!</Link>
         </Cadrastrostyle>
     </>
     )

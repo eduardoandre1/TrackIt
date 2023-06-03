@@ -28,18 +28,21 @@ function Login(){
             <h1>TrackIt</h1>
             <form>
                 <input 
+                    data-test="email-input"
                     type="email"placeholder="Email" value={Email}
                     onChange={(event)=>SetEmail(event.target.value)}/><br />
                 <input 
+                    data-test="password-input"
                     type="password" placeholder="Senha" value={Senha}
                     onChange={(event)=>SetSenha(event.target.value)}/><br />  
             </form>
             <button 
+                    data-test="login-btn"
                     disabled={waitlogin==true?true:false}
                     onClick={()=>Login_server()}>
                     {waitlogin==false?"Entrar":<ThreeDots color="white" />}
             </button>
-            <Link to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
+            <Link data-test="signup-link" to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
         </Loginstyle>
     )
 }
