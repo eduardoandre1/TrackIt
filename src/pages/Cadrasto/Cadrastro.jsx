@@ -4,6 +4,7 @@ import { ThreeDots } from "react-loader-spinner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Serve_answer from "../../assets/serve_answer";
 function Cadrastro(){
     const [waitlogin,SetWaitlogin]= useState(false)
     const [Email,SetEmail] = useState('')
@@ -31,6 +32,7 @@ function Cadrastro(){
     function Cadastro_server(){
         SetWaitlogin(true)
         isnull()
+        const navigate = useNavigate()
         const new_user ={
             email: Email,
             name: Nome,
@@ -38,7 +40,7 @@ function Cadrastro(){
             password: Senha
         }
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up',new_user)
-        promise.then(()=>{alert('enviado')})
+        promise.then(()=>alert('foi'))
         promise.catch(()=>{alert('erro no servidor');SetWaitlogin(false)})
     }
     return(

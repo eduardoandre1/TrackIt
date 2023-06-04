@@ -10,12 +10,12 @@ import Today from './pages/Today/Today'
 import {Percentage} from './percentage'
 import Historico from './pages/History/History'
 function App() {
-  
+  const [Serve,Setanswer] =useState('')
   return (
     <>
       <Resetstyle />
-      <Serve_answer.Provider>
-        <Percentage.Provider>
+      <Serve_answer.Provider value={Serve}>
+        <Percentage.Provider value={'recheio'}>
           <BrowserRouter>
             <Routes>
             <Route path="/" element={<Login />}/>
