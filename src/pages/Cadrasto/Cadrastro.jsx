@@ -51,15 +51,19 @@ function Cadrastro(){
         <h1>TrackIt</h1>
         <form>
                 <input type="text" placeholder="Email" value={Email}
+                        disabled={waitlogin==true?true:false}
                         data-test="email-input"
                         onChange={(event)=>SetEmail(event.target.value)}/><br />
                 <input type="password" placeholder="Senha" value={Senha}
+                        disabled={waitlogin==true?true:false}
                         data-test="password-input"
                         onChange={(event)=>SetSenha(event.target.value)}/><br />
                 <input type="text" placeholder="nome" value={Nome}
+                        disabled={waitlogin==true?true:false}
                         data-test="user-name-input"
                         onChange={(event)=>SetNome(event.target.value)}/><br />
                 <input type="text" placeholder="foto" value={Foto}
+                        disabled={waitlogin==true?true:false}
                         data-test="user-image-input"
                         onChange={(event)=>SetFoto(event.target.value)}/><br />
                 <input type="File" praceholder='arquivo'/>

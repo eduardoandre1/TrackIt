@@ -8,7 +8,7 @@ function Tail(){
     p100()
     useEffect(()=>p100(),[Percentage.value])
     return(
-        <Habit_tail>
+        <Habit_tail data-test="menu">
             <Link to={'/habitos'} data-test="habit-link">
                 <h3>
                     Hábitos

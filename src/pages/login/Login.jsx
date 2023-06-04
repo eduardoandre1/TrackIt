@@ -19,7 +19,7 @@ function Login(){
         }
         const promise = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",user)
         promise.then((resposta)=>{Serve_answer.value = resposta.data;console.log(Serve_answer.value);navigate('/hoje')})
-        promise.catch(()=>{alert('usuario invalido');SetSenha("");SetWaitlogin(false)})
+        promise.catch(()=>{alert('usuario invalido');SetSenha("");SetWaitlogin(false);SetEmail('')})
 
     }
     return(
@@ -29,10 +29,12 @@ function Login(){
             <form>
                 <input 
                     data-test="email-input"
+                    disabled={waitlogin==true?true:false}
                     type="email"placeholder="Email" value={Email}
                     onChange={(event)=>SetEmail(event.target.value)}/><br />
                 <input 
                     data-test="password-input"
+                    disabled={waitlogin==true?true:false}
                     type="password" placeholder="Senha" value={Senha}
                     onChange={(event)=>SetSenha(event.target.value)}/><br />  
             </form>
