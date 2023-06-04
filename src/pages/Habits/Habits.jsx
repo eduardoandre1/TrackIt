@@ -59,6 +59,12 @@ function Habits(){
 
     //enviar habito
     function send_habit(){
+        if(Newhabit === ""){
+            alert('habito vazio')
+            SetOpen(false)
+            return ('erro')
+
+        }
         Setwait(true)
         const habit = {
             name: Newhabit ,
@@ -81,9 +87,9 @@ function Habits(){
     }
     function weekday_style(day,Select){
         if(Select.indexOf(day.value)===-1){
-            return (<Weekdaystyle data-test="habit-day" onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Weekdaystyle>)
+            return (<Weekdaystyle  disabled={waithabit== true?true:false} data-test="habit-day" onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Weekdaystyle>)
         }else{
-            return(<Invertido data-test="habit-day" onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Invertido>)
+            return(<Invertido  disabled={waithabit== true?true:false} data-test="habit-day" onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Invertido>)
         }
     }
     function abrir(){
@@ -95,8 +101,8 @@ function Habits(){
                         {Days.map((day)=>weekday_style(day,Selectedays))}
                     </Week>
                     <Botons>
-                    <h2 data-test="habit-create-cancel-btn" onClick={()=>{SetOpen(false)}}>Cancel</h2>
-                    <button data-test="habit-create-save-btn" onClick={()=>{send_habit();Setatualizar(<Tail />)}}>{waithabit==false?"Salvar":<ThreeDots color="white" />}</button>
+                    <h2  disabled={waithabit== true?true:false} data-test="habit-create-cancel-btn" onClick={()=>{SetOpen(false)}}>Cancel</h2>
+                    <button  disabled={waithabit== true?true:false} data-test="habit-create-save-btn" onClick={()=>{send_habit();Setatualizar(<Tail />)}}>{waithabit==false?"Salvar":<ThreeDots color="white" />}</button>
                     </Botons>
                 </Create_Habit>)
         }
