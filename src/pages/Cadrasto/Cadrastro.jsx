@@ -11,6 +11,7 @@ function Cadrastro(){
     const [Senha,SetSenha] = useState('')
     const [Nome,SetNome] = useState('')
     const [Foto,SetFoto] = useState('')
+    const navigate = useNavigate()
     function isnull(){
         if(Email === null){
             alert('email empty')
@@ -32,7 +33,7 @@ function Cadrastro(){
     function Cadastro_server(){
         SetWaitlogin(true)
         isnull()
-        const navigate = useNavigate()
+        
         const new_user ={
             email: Email,
             name: Nome,
@@ -40,7 +41,7 @@ function Cadrastro(){
             password: Senha
         }
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up',new_user)
-        promise.then(()=>alert('foi'))
+        promise.then(()=>{navigate('/')})
         promise.catch(()=>{alert('erro no servidor');SetWaitlogin(false)})
     }
     return(
