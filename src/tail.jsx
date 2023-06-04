@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { Habit_tail, Progress } from "./pages/Habits/Habitys-style";
 import { CircularProgressbar , buildStyles } from "react-circular-progressbar";
 import { Percentage, p100 } from "./percentage";
+import { useEffect } from "react";
 
 function Tail(){
     p100()
+    useEffect(()=>p100(),[Percentage.value])
     return(
         <Habit_tail>
             <Link to={'/habitos'} data-test="habit-link">
@@ -31,6 +33,7 @@ function Tail(){
             </Link>
         </Habit_tail>
     )
+    
 }
 
 export default Tail

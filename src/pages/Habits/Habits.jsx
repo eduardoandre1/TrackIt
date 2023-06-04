@@ -14,7 +14,7 @@ function Habits(){
     const [Open, SetOpen] = useState(false)
     const [Newhabit,Sethabit] =useState('')
     const [list,setList] = useState()
-    const [atualizar,Setatualizar] =useState(Percentage.value)
+    const [atualizar,Setatualizar] =useState(<Tail />)
     const Days = [
         {dia:"D",value:0},
         {dia:"S",value:1},
@@ -30,6 +30,7 @@ function Habits(){
     function habit_list(){
         const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits',{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
         promise.then((resposta)=>{console.log(resposta.data);setList(resposta.data.map((L)=>habit_struture(L)))})
+        promise.catch(()=>setList(<p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>))
     }
     function habit_struture(data){
         let sunday = Days.map((dia)=>{
@@ -52,7 +53,7 @@ function Habits(){
     }
     function delete_habit(id){
         const promise =axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then(()=>{habit_list();p100();SetOpen(false);Setatualizar(Percentage.value)})
+        promise.then(()=>{habit_list();p100();SetOpen(false);Setatualizar(<Tail />)})
         promise.catch((resposta)=>console.log(resposta))
     }
 
@@ -64,7 +65,7 @@ function Habits(){
             days: Selectedays // segunda, quarta e sexta
         }
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits',habit,{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then((resposta)=>{Setwait(false);p100();SetOpen(false);Setatualizar(Percentage.value)})
+        promise.then((resposta)=>{Setwait(false);p100();SetOpen(false);Setatualizar(<Tail />)})
         promise.catch((resposta)=>{console.log(resposta)})
     }
     
@@ -88,7 +89,6 @@ function Habits(){
     function abrir(){
         if(Open===true){
             return(<Create_Habit data-test="habit-create-container">
-                    {atualizar}
                     <input type="text" value={Newhabit} data-test="habit-name-input"
                     onChange={(event)=>{Sethabit(event.target.value)}}/>
                     <Week>
@@ -96,7 +96,7 @@ function Habits(){
                     </Week>
                     <Botons>
                     <h2 data-test="habit-create-cancel-btn" onClick={()=>{SetOpen(false)}}>Cancel</h2>
-                    <button data-test="habit-create-save-btn" onClick={()=>{send_habit()}}>{waithabit==false?"Salvar":<ThreeDots color="white" />}</button>
+                    <button data-test="habit-create-save-btn" onClick={()=>{send_habit();Setatualizar(<Tail />)}}>{waithabit==false?"Salvar":<ThreeDots color="white" />}</button>
                     </Botons>
                 </Create_Habit>)
         }
@@ -106,8 +106,8 @@ function Habits(){
         
     }
     const aberto = abrir()
-    useEffect(()=>Setatualizar(Percentage.value),[list])
-    useEffect(()=>habit_list,[Percentage.value])
+    useEffect(()=>habit_list,[atualizar])
+    useEffect(()=>Setatualizar(<Tail />),[Percentage.value])
     return(
         <Habit_page>
             <Head_page />
@@ -118,8 +118,7 @@ function Habits(){
             </Habit_bar>
             {aberto}
             {list}
-            <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
-            <Tail/>
+            {atualizar}
         </Habit_page>
     )
 }

@@ -3,14 +3,14 @@ import { ReactDOM } from "react";
 import axios from "axios";
 import Serve_answer from "./assets/serve_answer";
 
-const Percentage = createContext()
+const [Percentage,Setpercent] = createContext()
 
 function p100(){
     function p(data){
-        let g = 0
+        let g = 0;
         data.map((habito)=>{if(habito.done===true){g++}})
         let  total = data.length
-        Percentage.value = (g/total)*100;
+        SetPercent((g/total)*100)
         console.log(Percentage.value)
 
     }
