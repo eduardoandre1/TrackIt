@@ -5,12 +5,16 @@ import {Create_Habit, Habit_head ,Habit_page ,Habit_bar ,Progress ,Habit_tail ,M
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ThreeDots } from "react-loader-spinner";
-import { Link } from "react-router-dom";
+import {Percentage ,p100} from "../../percentage";
+import Head_page from "../../head";
+import Tail from "../../tail";
+
 
 function Habits(){
     const [Open, SetOpen] = useState(false)
     const [Newhabit,Sethabit] =useState('')
     const [list,setList] = useState()
+    const [atualizar,Setatualizar] =useState(Percentage.value)
     const Days = [
         {dia:"D",value:0},
         {dia:"S",value:1},
@@ -20,7 +24,6 @@ function Habits(){
         {dia:"S",value:5},
         {dia:"S",value:6}]
     const [Selectedays,SetDays] = useState([])
-    const percentage = 80;
     const [waithabit,Setwait] = useState(false)
     
     //pegar habitos do servidor 
@@ -31,16 +34,16 @@ function Habits(){
     function habit_struture(data){
         let sunday = Days.map((dia)=>{
             if(data.days.indexOf(dia.value)===-1){
-                return(<Weekdaystyle key={dia.value}>{dia.dia}</Weekdaystyle>)
+                return(<Weekdaystyle data-test="habit-day" key={dia.value}>{dia.dia}</Weekdaystyle>)
             }else{
-                return(<Invertido>{dia.dia}</Invertido>)
+                return(<Invertido data-test="habit-day" key={dia.value}>{dia.dia}</Invertido>)
                 
             }
         })
         return(
-        <Habit_box key={data.id}>
-            <img onClick={()=>delete_habit(data.id)} src="../src/assets/trash.jpg" />
-            <h1>{data.name}</h1>
+        <Habit_box data-test="habit-container" key={data.id}>
+            <img data-test="habit-delete-btn" onClick={()=>delete_habit(data.id)} src="src/assets/dump.svg" />
+            <h1 data-test="habit-name">{data.name}</h1>
             <Week>
             {sunday}
             </Week>  
@@ -49,10 +52,10 @@ function Habits(){
     }
     function delete_habit(id){
         const promise =axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then(()=>{habit_list;SetOpen(false)})
+        promise.then(()=>{habit_list();p100();SetOpen(false);Setatualizar(Percentage.value)})
         promise.catch((resposta)=>console.log(resposta))
     }
-    
+
     //enviar habito
     function send_habit(){
         Setwait(true)
@@ -61,7 +64,7 @@ function Habits(){
             days: Selectedays // segunda, quarta e sexta
         }
         const promise = axios.post('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits',habit,{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then((resposta)=>{Setwait(false),SetOpen(false)})
+        promise.then((resposta)=>{Setwait(false);p100();SetOpen(false);Setatualizar(Percentage.value)})
         promise.catch((resposta)=>{console.log(resposta)})
     }
     
@@ -77,22 +80,23 @@ function Habits(){
     }
     function weekday_style(day,Select){
         if(Select.indexOf(day.value)===-1){
-            return (<Weekdaystyle onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Weekdaystyle>)
+            return (<Weekdaystyle data-test="habit-day" onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Weekdaystyle>)
         }else{
-            return(<Invertido onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Invertido>)
+            return(<Invertido data-test="habit-day" onClick={()=>{Weekday_select(day.value,Selectedays)}} >{day.dia}</Invertido>)
         }
     }
     function abrir(){
         if(Open===true){
-            return(<Create_Habit>
-                    <input type="text" value={Newhabit} 
+            return(<Create_Habit data-test="habit-create-container">
+                    {atualizar}
+                    <input type="text" value={Newhabit} data-test="habit-name-input"
                     onChange={(event)=>{Sethabit(event.target.value)}}/>
                     <Week>
                         {Days.map((day)=>weekday_style(day,Selectedays))}
                     </Week>
                     <Botons>
-                    <h2 onClick={()=>{SetOpen(false)}}>Cancel</h2>
-                    <button onClick={()=>{send_habit()}}>{waithabit==false?"Salvar":<ThreeDots color="white" />}</button>
+                    <h2 data-test="habit-create-cancel-btn" onClick={()=>{SetOpen(false)}}>Cancel</h2>
+                    <button data-test="habit-create-save-btn" onClick={()=>{send_habit()}}>{waithabit==false?"Salvar":<ThreeDots color="white" />}</button>
                     </Botons>
                 </Create_Habit>)
         }
@@ -102,43 +106,20 @@ function Habits(){
         
     }
     const aberto = abrir()
-    useEffect(()=>SetOpen(false),[])
-    useEffect(()=>habit_list,[Open])
-    
+    useEffect(()=>Setatualizar(Percentage.value),[list])
+    useEffect(()=>habit_list,[Percentage.value])
     return(
         <Habit_page>
-            <Habit_head>
-                <h1>TrackIt</h1>
-                <Minidiv>
-                    <h3>{Serve_answer.value.name}</h3>
-                    <img src={Serve_answer.value.image} alt="" />
-                </Minidiv>
-            </Habit_head>
+            <Head_page />
             <Habit_bar>
                 <h2>Meus hábitos</h2>
-                <button
+                <button data-test="habit-create-btn"
                 onClick={()=>{SetOpen(true)}}>+</button>
             </Habit_bar>
             {aberto}
             {list}
             <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
-            <Habit_tail>
-                <h3>Hábitos</h3>
-                <Link to={'/hoje'}>
-                <Progress>
-                <CircularProgressbar
-                value={percentage}
-                styles={buildStyles({
-                    textColor: "#fff",
-                    pathColor: "#fff",
-                    trailColor: "transparent"
-                })}
-                text="Hoje" />
-                </Progress>
-                </Link>
-                <h3>Histórico</h3>
-            </Habit_tail>
-
+            <Tail/>
         </Habit_page>
     )
 }

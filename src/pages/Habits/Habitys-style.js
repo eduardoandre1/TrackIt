@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Habit_page = styled.div`
 background: #E5E5E5;
 width: 100vw;
-height: 100%;
+height: 800px;
 display: flex;
 flex-direction: column;
 align-items: center;

@@ -1,7 +1,6 @@
 import { createContext } from "react";
 import { ReactDOM } from "react";
 
-const Serve_answer = createContext({name: 'usuario', image: 'src/assets/logo.jpg', email: '', password: '123',token
-:'valor'})
+const Serve_answer = createContext('great')
 
 export default Serve_answer

@@ -7,6 +7,8 @@ background: #FFFFFF;
 border-radius: 5px;
 position: relative;
 margin: 5px;
+justify-content: space-between;
+
 
 h1{
     font-family: 'Lexend Deca';
@@ -16,6 +18,8 @@ h1{
     line-height: 25px;
     color: #666666;
     overflow: hidden;
+    margin-top: 5px;
+    text-align: center;
 }
 h2{
     font-family: 'Lexend Deca';
@@ -31,15 +35,15 @@ const Greenbutton = styled.div`
     box-sizing: border-box;
     width: 69px;
     height: 69px;
-    background: green;
+    background: #8FC549;
     border: 1px solid #E7E7E7;
     border-radius: 5px;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 12px;
+    right: 5px;
 `
 
 const Graybutton = styled(Greenbutton)`
-background-color:gray`
+background-color: #EBEBEB;`
 
 export { Today_habit ,Greenbutton , Graybutton}
