@@ -47,6 +47,7 @@ function Today(){
     function Get_Habits(){
         const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today',{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
         promise.then((resposta)=>{generate_habit(resposta.data);console.log(resposta.data)})
+        promise.catch(()=>Setask(<p>Nenhum hábito concluído ainda</p>))
 
     }
     function done_habit(id,done){
