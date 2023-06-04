@@ -68,7 +68,7 @@ function Today(){
         <Head_page />
         <Habit_bar>
             <h2>{semana[dayjs().day()]}, {dayjs().date()}/{dayjs().get('month')+1}</h2>
-            <h3 data-test="today-counter">{Percentage.value}% dos hábitos concluídos</h3>
+            <h3 data-test="today-counter">{parseInt(Percentage.value)}% dos hábitos concluídos</h3>
         </Habit_bar>
         {today_task}
        <Tail />
