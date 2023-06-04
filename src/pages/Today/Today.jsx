@@ -2,7 +2,7 @@ import { Habit_bar, Habit_head, Habit_page, Habit_tail , Minidiv ,Progress } fro
 import Serve_answer from "../../assets/serve_answer"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import { Link } from "react-router-dom";
-import { Graybutton, Greenbutton , Today_habit } from "./Today-style";
+import { Graybutton, Green, Greenbutton , Today_habit } from "./Today-style";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {Percentage ,p100} from "../../percentage";
@@ -37,8 +37,8 @@ function Today(){
             <Today_habit key={habito.id} data-test="today-habit-container">
             <h1 data-test="today-habit-name">{habito.name}</h1>
             <div>
-            <h2 data-test="today-habit-sequence">Sequência atual:{habito.currentSequence} </h2>
-            <h2 data-test="today-habit-record">dias Seu recorde: {habito.highestSequence} dias </h2>
+            <h2 data-test="today-habit-sequence">Sequência atual:<Green>{habito.currentSequence} dias</Green> </h2>
+            <h2 data-test="today-habit-record">dias Seu recorde: <Green>{habito.highestSequence} dias</Green> </h2>
             </div>
             {button}
         </Today_habit>

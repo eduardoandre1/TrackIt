@@ -41,8 +41,10 @@ const Greenbutton = styled.div`
     top: 12px;
     right: 5px;
 `
+const Green =styled.h2`
+ color:#8FC549;`
 
 const Graybutton = styled(Greenbutton)`
 background-color: #EBEBEB;`
 
-export { Today_habit ,Greenbutton , Graybutton}
+export { Today_habit ,Greenbutton , Graybutton ,Green}
