@@ -7,8 +7,7 @@ background: #FFFFFF;
 border-radius: 5px;
 position: relative;
 margin: 5px;
-justify-content: space-between;
-
+flex-wrap: wrap;
 
 h1{
     font-family: 'Lexend Deca';

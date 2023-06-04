@@ -235,6 +235,10 @@ const Weekdaystyle =styled.div`
     text-align: center;
     color: #DBDBDB;
     margin: 2px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 5px;
+        
 `
 const Invertido = styled.div`
     width: 30px;
@@ -250,5 +254,8 @@ const Invertido = styled.div`
     text-align: center;
     color: #FFFFFF;
     margin: 2px;
+    background: #CFCFCF;
+    border: 1px solid #CFCFCF;
+    border-radius: 5px;
 `
 export {Habit_box, Weekdaystyle, Invertido, Habit_head,Habit_page,Habit_bar,Progress ,Habit_tail ,Minidiv ,Create_Habit,Week ,Botons}
