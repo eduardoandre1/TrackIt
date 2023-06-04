@@ -1,4 +1,4 @@
-import { Habit_head, Habit_page, Habit_tail , Minidiv ,Progress } from "../Habits/Habitys-style"
+import { Habit_bar, Habit_head, Habit_page, Habit_tail , Minidiv ,Progress } from "../Habits/Habitys-style"
 import Serve_answer from "../../assets/serve_answer"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import { Link } from "react-router-dom";
@@ -17,16 +17,17 @@ function Today(){
         Setask(data.map((habito)=>{
             let button = ''
             if(habito.done === true){
-                button = <Greenbutton onClick={()=>done_habit(habito.id,habito.done)}><img src="../src/assets/check.svg" /></Greenbutton>
+                button = <Greenbutton data-test="today-habit-check-btn" onClick={()=>done_habit(habito.id,habito.done)}><img src="../src/assets/check.svg" /></Greenbutton>
             }
             else if(habito.done === false){
-                button = <Graybutton onClick={()=>done_habit(habito.id,habito.done)}><img src="../src/assets/check.svg" /></Graybutton>
+                button = <Graybutton data-test="today-habit-check-btn" onClick={()=>done_habit(habito.id,habito.done)}><img src="../src/assets/check.svg" /></Graybutton>
             }
             Setatualizar(Percentage.value)
             return(
             <Today_habit key={habito.id} data-test="today-habit-container">
-            <h1>{habito.name}</h1>
-            <h2>Sequência atual:{habito.currentSequence} dias Seu recorde: {habito.highestSequence} dias </h2>
+            <h1 data-test="today-habit-name">{habito.name}</h1>
+            <h2 data-test="today-habit-sequence">Sequência atual:{habito.currentSequence} </h2>
+            <h2 data-test="today-habit-record">dias Seu recorde: {habito.highestSequence} dias </h2>
             {button}
         </Today_habit>
         )}))
@@ -55,6 +56,10 @@ function Today(){
     return(
     <Habit_page>
         <Head_page />
+        <Habit_bar>
+            <h2>dia</h2>
+            <h3 data-test="today-counter">{Percentage.value}% dos hábitos concluídos</h3>
+        </Habit_bar>
         {today_task}
        <Tail />
     </Habit_page>
