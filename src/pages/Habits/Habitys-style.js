@@ -119,6 +119,9 @@ background: #FFFFFF;
 display: flex;
 justify-content: space-evenly;
 align-items: center;
+a{
+    text-decoration: none;
+}
 `
 const Progress = styled.div`
 font-family: 'Lexend Deca';

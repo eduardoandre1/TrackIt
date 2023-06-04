@@ -49,7 +49,7 @@ function Habits(){
     }
     function delete_habit(id){
         const promise =axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
-        promise.then(()=>habit_list)
+        promise.then(()=>{habit_list;SetOpen(false)})
         promise.catch((resposta)=>console.log(resposta))
     }
     
