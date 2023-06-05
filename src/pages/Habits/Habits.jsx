@@ -95,7 +95,7 @@ function Habits(){
     function abrir(){
         if(Open===true){
             return(<Create_Habit data-test="habit-create-container">
-                    <input type="text" value={Newhabit} data-test="habit-name-input"
+                    <input disabled={waithabit== true?true:false} type="text" value={Newhabit} data-test="habit-name-input"
                     onChange={(event)=>{Sethabit(event.target.value)}}/>
                     <Week>
                         {Days.map((day)=>weekday_style(day,Selectedays))}
