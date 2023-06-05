@@ -2,7 +2,7 @@ import { Habit_bar, Habit_head, Habit_page, Habit_tail , Minidiv ,Progress } fro
 import Serve_answer from "../../assets/serve_answer"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 import { Link } from "react-router-dom";
-import { Graybutton, Green, Greenbutton , Today_habit } from "./Today-style";
+import { Graybutton, Greenbutton ,Today_habit,Greentext } from "./Today-style";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import {Percentage ,p100} from "../../percentage";
@@ -13,6 +13,7 @@ import dayjs from "dayjs";
 function Today(){
     const [today_task,Setask] = useState('')
     const [atualizar,Setatualizar] =useState(Percentage.value)
+    const [seletor, Setseletor] = useState(``)
     const semana =[
         "Domingo",
         "Segunda",
@@ -33,21 +34,29 @@ function Today(){
                 button = <Graybutton data-test="today-habit-check-btn" onClick={()=>done_habit(habito.id,habito.done)}><img src="../src/assets/check.svg" /></Graybutton>
             }
             Setatualizar(Percentage.value)
+            let data = ''
+            let data2 =''
+            if(habito.currentSequence ==  habito.highestSequence){
+                data =(<Greentext data-test="today-habit-sequence" >Sequência atual: {habito.currentSequence} dias</Greentext>)
+                data2=(<Greentext data-test="today-habit-record">Seu recorde: {habito.highestSequence} dias</Greentext>)
+            }
+            else{
+                data =(<h2 data-test="today-habit-sequence" >Sequência atual: ${habito.currentSequence} dias</h2>)
+                data2=(<h2 data-test="today-habit-record">Seu recorde: ${habito.highestSequence} dias</h2>)
+            }
             return(
             <Today_habit key={habito.id} data-test="today-habit-container">
             <h1 data-test="today-habit-name">{habito.name}</h1>
-            <div>
-            <h2 data-test="today-habit-sequence">Sequência atual:<Green>{habito.currentSequence} dias</Green> </h2>
-            <h2 data-test="today-habit-record">dias Seu recorde: <Green>{habito.highestSequence} dias</Green> </h2>
-            </div>
+            {data}
+            {data2}
             {button}
-        </Today_habit>
+            </Today_habit>
         )}))
     }
     function Get_Habits(){
         const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today',{headers:{Authorization: `Bearer ${Serve_answer.value.token}`}})
         promise.then((resposta)=>{generate_habit(resposta.data);console.log(resposta.data)})
-        promise.catch(()=>Setask(<p>Nenhum hábito concluído ainda</p>))
+        promise.catch(()=>Setseletor('Nenhum hábito concluído ainda'))
 
     }
     function done_habit(id,done){
@@ -71,10 +80,10 @@ function Today(){
         <Head_page />
         <Habit_bar>
             <h2 data-test="today" >{semana[dayjs().day()]}, {dayjs().date()}/{dayjs().get('month')+1}</h2>
-            <h3 data-test="today-counter">{parseInt(Percentage.value)}% dos hábitos concluídos</h3>
+            <h3 data-test="today-counter">{isNaN(Percentage.value)==true ?'Nenhum hábito concluído ainda':`${parseInt(Percentage.value)}% dos hábitos concluídos`}</h3>
         </Habit_bar>
         {today_task}
-       <Tail />
+        <Tail />
     </Habit_page>
     )
 }
