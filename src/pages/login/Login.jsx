@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import Serve_answer from "../../assets/serve_answer";
 import dayjs from "dayjs";
-
+import Logo from  '../../assets/logo.svg';
 function Login(){
     const navigate = useNavigate()
     const [waitlogin,SetWaitlogin]= useState(false)
@@ -25,8 +25,7 @@ function Login(){
     }
     return(
         <Loginstyle>
-        <img src="../src/assets/logo.jpg" alt="logo" />
-            <h1>TrackIt</h1>
+        <img src={Logo} alt="logo" />
             <form>
                 <input 
                     data-test="email-input"

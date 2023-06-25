@@ -11,10 +11,11 @@ import {Percentage} from './percentage'
 import Historico from './pages/History/History'
 function App() {
   const [Serve,Setanswer] =useState('')
+  const [progress,Setprogress] =useState(0)
   return (
     <>
       <Resetstyle />
-      <Serve_answer.Provider value={Serve}>
+      <Serve_answer.Provider value={{Serve,Setanswer,progress,Setprogress}}>
         <Percentage.Provider value={'recheio'}>
           <BrowserRouter>
             <Routes>
