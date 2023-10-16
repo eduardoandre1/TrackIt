@@ -5,7 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Serve_answer from "../../assets/serve_answer";
-import log from "../../assets/log.jpg"
+import log from "../../assets/logo.jpg"
 function Cadrastro(){
     const [waitlogin,SetWaitlogin]= useState(false)
     const [Email,SetEmail] = useState('')
