@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Serve_answer from "../../assets/serve_answer";
+import log from "../../assets/log.jpg"
 function Cadrastro(){
     const [waitlogin,SetWaitlogin]= useState(false)
     const [Email,SetEmail] = useState('')
@@ -47,7 +48,7 @@ function Cadrastro(){
     return(
     <>
         <Cadrastrostyle>
-        <img src="src/assets/logo.jpg" alt="logo" />
+        <img src={log} alt="logo" />
         <h1>TrackIt</h1>
         <form>
                 <input type="text" placeholder="Email" value={Email}

@@ -5,7 +5,6 @@ import { ThreeDots } from "react-loader-spinner";
 import { useState } from "react";
 import axios from "axios";
 import Serve_answer from "../../assets/serve_answer";
-import dayjs from "dayjs";
 import Logo from  '../../assets/logo.svg';
 function Login(){
     const navigate = useNavigate()
@@ -42,7 +41,6 @@ function Login(){
                     data-test="login-btn"
                     disabled={waitlogin==true?true:false}
                     onClick={()=>Login_server()}>
-                    {waitlogin==false?"Entrar":<ThreeDots color="white" />}
             </button>
             <Link data-test="signup-link" to='/cadastro'>Não tem uma conta? Cadastre-se!</Link>
         </Loginstyle>
